@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voctra | Création de Sites Web Professionnels & Accessibles</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <style>
+        /* Animations CSS fluides utilisant uniquement le GPU */
+        @keyframes slow-float-1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -40px) scale(1.1); }
+        }
+        @keyframes slow-float-2 {
+            0%, 100% { transform: translate(0, 0) scale(1.1); }
+            50% { transform: translate(-40px, 30px) scale(0.95); }
+        }
+        @keyframes shine {
+            100% { left: 125%; }
+        }
+
+        /* Classes d'animation */
+        .animate-blob-1 { animation: slow-float-1 12s infinite ease-in-out; }
+        .animate-blob-2 { animation: slow-float-2 15s infinite ease-in-out; }
+        
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -60%; width: 30%; height: 200%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(30deg);
+            animation: shine 4s infinite ease-in-out;
+        }
+
+        /* Style de base pour l'apparition au scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Empêcher le scroll pendant le chargement initial */
+        .no-scroll {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body 
+    class="bg-white text-slate-800 font-sans antialiased relative overflow-x-hidden no-scroll" 
+    x-data="{ legalModalOpen: false, siteLoaded: false, heroAnimated: false }"
+    x-init="
+        window.addEventListener('load', () => {
+            setTimeout(() => { 
+                siteLoaded = true; 
+                document.body.classList.remove('no-scroll');
+                setTimeout(() => { heroAnimated = true; }, 400);
+            }, 800);
+        });
+    "
+>
+
+    <div 
+        class="fixed inset-0 bg-slate-950 z-[100] flex flex-col items-center justify-center transition-all duration-700 ease-in-out pointer-events-none"
+        :class="siteLoaded ? 'opacity-0 -translate-y-full' : 'opacity-100 translate-y-0'"
+    >
+        <div class="text-center space-y-4">
+            <div class="text-3xl font-black tracking-tight text-white">
+                Voct<span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">ra</span>
+            </div>
+            <div class="w-24 h-[3px] bg-slate-800 rounded-full overflow-hidden mx-auto relative">
+                <div class="absolute inset-y-0 left-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 w-1/2 rounded-full animate-[shine_1.5s_infinite_ease-in-out]" style="animation-name: loading-bar; width: 40px;"></div>
+            </div>
+        </div>
+        <style>
+            @keyframes loading-bar {
+                0% { left: -40px; }
+                100% { left: 100%; }
+            }
+        </style>
+    </div>
+
+    <div class="absolute top-[-5%] left-[-5%] w-[600px] h-[600px] bg-gradient-to-tr from-indigo-200/40 via-purple-200/30 to-pink-200/20 rounded-full blur-[120px] animate-blob-1 pointer-events-none z-0"></div>
+    <div class="absolute top-[1000px] right-[-10%] w-[700px] h-[700px] bg-gradient-to-br from-blue-200/30 via-indigo-100/40 to-violet-200/30 rounded-full blur-[140px] animate-blob-2 pointer-events-none z-0"></div>
+    <div class="absolute bottom-[400px] left-[-5%] w-[500px] h-[500px] bg-gradient-to-tr from-purple-200/40 to-pink-200/30 rounded-full blur-[120px] animate-blob-1 pointer-events-none z-0"></div>
+
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-lg shadow-md transition-all duration-700 delay-300 transform" :class="siteLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'" x-data="{ mobileMenuOpen: false }">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-2xl font-black tracking-tight text-slate-900 group">
+                        Voct<span class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent transition-all duration-300 group-hover:brightness-110">ra</span>
+                    </a>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8 items-center">
+                    <a href="#" class="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-colors">Accueil</a>
+                    <a href="#avantages" class="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-colors">Avantages</a>
+                    <a href="#services" class="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-colors">Services & Tarifs</a>
+                    <a href="#processus" class="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-colors">Notre Processus</a>
+                    <a href="#garanties" class="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-colors">Délais & Garanties</a>
+                    <a href="#contact" class="btn-shine inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-bold rounded-xl text-white bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:brightness-110 transition-all shadow-lg shadow-indigo-600/20 transform hover:scale-105">
+                        Demander un devis gratuit
+                    </a>
+                </nav>
+
+                <div class="md:hidden">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-slate-600 hover:text-indigo-600 focus:outline-none transition-colors duration-200">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="h-[2px] w-full bg-gradient-to-r from-indigo-500/30 via-purple-500/30 to-pink-500/30"></div>
+
+        <div x-show="mobileMenuOpen" x-transition class="md:hidden bg-white px-4 pt-2 pb-4 space-y-1 shadow-inner">
+            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors" @click="mobileMenuOpen = false">Accueil</a>
+            <a href="#avantages" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors" @click="mobileMenuOpen = false">Avantages</a>
+            <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors" @click="mobileMenuOpen = false">Services & Tarifs</a>
+            <a href="#processus" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors" @click="mobileMenuOpen = false">Notre Processus</a>
+            <a href="#garanties" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors" @click="mobileMenuOpen = false">Délais & Garanties</a>
+            <a href="#contact" class="block w-full text-center px-4 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-xl mt-4 hover:brightness-110 shadow-md transition-all" @click="mobileMenuOpen = false">Demander un devis gratuit</a>
+        </div>
+    </header>
+
+    <section class="relative py-24 lg:py-36 flex items-center justify-center text-center z-10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            
+            <div class="transition-all duration-1000 transform" :class="heroAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'">
+                <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-indigo-50 text-indigo-700 mb-6 border border-indigo-100 backdrop-blur-sm transition-transform duration-300 hover:scale-105">
+                    🤝 Votre présence en ligne au juste prix, en toute confiance
+                </span>
+            </div>
+
+            <h1 class="text-4xl font-black tracking-tight text-slate-900 sm:text-5xl md:text-6xl leading-tight transition-all duration-1000 delay-150 transform" :class="heroAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'">
+                Propulsez votre entreprise avec un site web <span class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent">sur-mesure</span>.
+            </h1>
+
+            <p class="mt-6 text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed transition-all duration-1000 delay-300 transform" :class="heroAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'">
+                Nous concevons des sites professionnels, captivants, ultra-rapides et entièrement optimisés pour le référencement. Obtenez un outil de travail performant adapté à votre budget.
+            </p>
+
+            <div class="mt-10 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 transition-all duration-1000 delay-450 transform" :class="heroAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'">
+                <a href="#contact" class="btn-shine w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-bold rounded-xl text-white bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:brightness-110 shadow-xl shadow-indigo-600/20 transition-all transform hover:-translate-y-1">
+                    Demander mon devis gratuit
+                </a>
+                <a href="#services" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 border border-indigo-200 text-base font-bold rounded-xl text-indigo-600 bg-white/80 hover:bg-indigo-50 hover:text-indigo-700 backdrop-blur-sm transition-all transform hover:-translate-y-1 shadow-sm">
+                    Voir nos tarifs
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="avantages" class="py-20 relative z-10" x-data="{ shown: false }" x-intersect.once="shown = true">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal" :class="{ 'active': shown }">
+                <h2 class="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">Pourquoi travailler avec nous ?</h2>
+                <p class="mt-4 text-lg text-slate-600">Bien plus qu'un simple prestataire, nous créons une expérience unique pour vous et vos clients.</p>
+            </div>
+
+            <div class="grid gap-8 md:grid-cols-3">
+                <div class="p-8 rounded-2xl bg-white border border-slate-100 shadow-xl shadow-slate-100/50 group transition-all duration-300 hover:-translate-y-1 hover:shadow-slate-200/60 reveal" :class="{ 'active': shown }" style="transition-delay: 100ms;">
+                    <div class="flex flex-col h-full justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 font-bold mb-6 text-xl group-hover:scale-110 transition-transform shadow-inner">🎯</div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">SEO & Visibilité intégrés</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Un beau site ne sert à rien si personne ne le trouve. Nous intégrons les meilleures pratiques de référencement naturel dès la conception pour vous aider à monter sur Google.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-8 rounded-2xl bg-white border border-slate-100 shadow-xl shadow-slate-100/50 group transition-all duration-300 hover:-translate-y-1 hover:shadow-slate-200/60 reveal" :class="{ 'active': shown }" style="transition-delay: 250ms;">
+                    <div class="flex flex-col h-full justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center text-purple-600 font-bold mb-6 text-xl group-hover:scale-110 transition-transform shadow-inner">⚡</div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Vitesse & Performance</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Nos codes sont optimisés pour charger en un clin d'œil. C'est idéal pour réduire le taux de rebond de vos visiteurs et maximiser l'expérience utilisateur sur mobile.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-8 rounded-2xl bg-white border border-slate-100 shadow-xl shadow-slate-100/50 group transition-all duration-300 hover:-translate-y-1 hover:shadow-slate-200/60 reveal" :class="{ 'active': shown }" style="transition-delay: 400ms;">
+                    <div class="flex flex-col h-full justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-pink-50 flex items-center justify-center text-pink-600 font-bold mb-6 text-xl group-hover:scale-110 transition-transform shadow-inner">🤝</div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">100% Propriétaire</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Pas de frais cachés, pas d'abonnement captif mensuel obligatoire. Une fois le projet livré et finalisé, le site vous appartient entièrement. Vous gardez le contrôle total.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 bg-slate-50/70 border-y border-slate-100 relative z-10" x-data="{ shown: false }" x-intersect.once="shown = true">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto reveal" :class="{ 'active': shown }">
+                <h2 class="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">Des offres claires et accessibles</h2>
+                <p class="mt-4 text-lg text-slate-600">La qualité professionnelle enfin accessible aux indépendants.</p>
+            </div>
+
+            <div class="mt-16 grid gap-8 lg:grid-cols-4 lg:gap-x-5 items-stretch">
+                <div class="bg-white rounded-3xl border border-slate-100 p-6 shadow-xl shadow-slate-200/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-slate-200/70 reveal" :class="{ 'active': shown }" style="transition-delay: 100ms;">
+                    <div class="flex flex-col justify-between h-full w-full">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900">Offre Débutant</h3>
+                            <p class="mt-2 text-slate-500 text-sm">Idéal pour lancer votre activité et présenter vos services avec élégance.</p>
+                            <p class="mt-6"><span class="text-3xl font-black text-slate-900">490€</span></p>
+                            <ul class="mt-8 space-y-4 text-sm text-slate-600">
+                                <li class="flex items-center"><svg class="w-4 h-4 text-indigo-600 mr-2 shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Le site se contient en une page</li>
+                                <li class="flex items-center"><svg class="w-4 h-4 text-indigo-600 mr-2 shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Accueil + Services + Contact</li>
+                                <li class="flex items-center"><svg class="w-4 h-4 text-indigo-600 mr-2 shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Design moderne & Responsive</li>
+                            </ul>
+                        </div>
+                        <a href="#contact" class="mt-8 block w-full text-center px-4 py-3 border border-indigo-200 text-sm font-bold rounded-xl text-indigo-600 bg-indigo-50/50 hover:bg-indigo-600 hover:text-white transition-all shadow-sm">Choisir cette offre</a>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-b from-white to-indigo-50/10 rounded-3xl border-2 border-indigo-600 p-6 relative shadow-2xl shadow-indigo-600/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-indigo-600/20 reveal" :class="{ 'active': shown }" style="transition-delay: 200ms;">
+                    <span class="absolute top-0 right-1/2 translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-[10px] font-extrabold uppercase px-3 py-1 rounded-full tracking-wider whitespace-nowrap shadow-md z-20">Le plus demandé</span>
+                    <div class="flex flex-col justify-between h-full w-full">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 flex items-center justify-between">Offre Professionnelle ✨</h3>
+                            <p class="mt-2 text-slate-500 text-sm">Lancez votre site professionnel sur le web and commencez à vendre vos produits and services partout.</p>
+                            <p class="mt-6"><span class="text-3xl font-black bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">990€</span></p>
+                            <ul class="mt-8 space-y-4 text-sm text-slate-700">
+                                <li class="flex items-center"><svg class="w-4 h-4 text-indigo-600 mr-2 shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Un site contenant 6 à 8 pages</li>
+                                <li class="flex items-center"><svg class="w-4 h-4 text-indigo-600 mr-2 shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Utilisations de base de données</li>
+                                <li class="flex items-center"><svg class="w-4 h-4 text-indigo-600 mr-2 shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Configuration</li>
+                            </ul>
+                        </div>
+                        <a href="#contact" class="btn-shine mt-8 block w-full text-center px-4 py-3 text-sm font-bold rounded-xl text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:brightness-110 shadow-md transition-all">Choisir cette offre</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl border border-slate-100 p-6 shadow-xl shadow-slate-200/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-slate-200/70 reveal" :class="{ 'active': shown }" style="transition-delay: 300ms;">
+                    <div class="flex flex-col justify-between h-full w-full">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900">Refonte & Sur-Mesure</h3>
+                            <p class="mt-2 text-slate-500 text-sm">Modernisez votre ancien site ou ajoutez des fonctionnalités complexes.</p>
+                            <p class="mt-6"><span class="text-3xl font-black text-slate-900">Sur devis</span></p>
+                            <ul class="mt-8 space-y-4 text-sm text-slate-600">
+                                <li class="flex items-center"><svg class="w-4 h-4 text-indigo-600 mr-2 shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Audit complet du site actuel</li>
+                                <li class="flex items-center"><svg class="w-4 h-4 text-indigo-600 mr-2 shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Outils complexes</li>
+                                <li class="flex items-center"><svg class="w-4 h-4 text-indigo-600 mr-2 shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Migration de contenus sécurisée</li>
+                            </ul>
+                        </div>
+                        <a href="#contact" class="mt-8 block w-full text-center px-4 py-3 border border-purple-200 text-sm font-bold rounded-xl text-purple-600 bg-purple-50/50 hover:bg-purple-600 hover:text-white transition-all shadow-sm">Nous contacter</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl border border-slate-100 p-6 shadow-xl shadow-slate-200/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-slate-200/70 reveal" :class="{ 'active': shown }" style="transition-delay: 400ms;">
+                    <div class="flex flex-col justify-between h-full w-full">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900">Maintenance</h3>
+                            <p class="mt-2 text-slate-500 text-sm">Gardez votre site sécurisé, à jour et performant tout au long de l'année.</p>
+                            <p class="mt-6"><span class="text-3xl font-black text-slate-900">À partir de 49€<span class="text-xs font-normal text-slate-400">/mois</span></span></p>
+                            <ul class="mt-8 space-y-4 text-sm text-slate-600">
+                                <li class="flex items-center"><svg class="w-4 h-4 text-indigo-600 mr-2 shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Mises à jour</li>
+                                <li class="flex items-center"><svg class="w-4 h-4 text-indigo-600 mr-2 shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Sauvegardes automatisées</li>
+                                <li class="flex items-center"><svg class="w-4 h-4 text-indigo-600 mr-2 shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Surveillance de sécurité</li>
+                            </ul>
+                        </div>
+                        <a href="#contact" class="mt-8 block w-full text-center px-4 py-3 border border-pink-200 text-sm font-bold rounded-xl text-pink-600 bg-pink-50/50 hover:bg-pink-600 hover:text-white transition-all shadow-sm">Souscrire un plan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="processus" class="py-20 relative z-10" x-data="{ shown: false }" x-intersect.once="shown = true">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto reveal" :class="{ 'active': shown }">
+                <h2 class="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">Un site clé en main en 4 étapes</h2>
+                <p class="mt-4 text-lg text-slate-600">Une méthodologie simple et transparente pour donner vie à votre projet sans surprise.</p>
+            </div>
+
+            <div class="mt-16 grid gap-8 md:grid-cols-4">
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 transition-transform duration-300 hover:scale-105 shadow-sm reveal" :class="{ 'active': shown }" style="transition-delay: 100ms;">
+                    <div class="text-4xl font-black bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-2">01</div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-1">Brief & Échanges</h3>
+                    <p class="text-slate-600 text-sm">Nous étudions ensemble votre projet, vos objectifs et vos préférences de style.</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 transition-transform duration-300 hover:scale-105 shadow-sm reveal" :class="{ 'active': shown }" style="transition-delay: 200ms;">
+                    <div class="text-4xl font-black bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">02</div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-1">Proposition & Maquette</h3>
+                    <p class="text-slate-600 text-sm">Nous concevons la structure visuelle de votre site pour validation avant développement.</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 transition-transform duration-300 hover:scale-105 shadow-sm reveal" :class="{ 'active': shown }" style="transition-delay: 300ms;">
+                    <div class="text-4xl font-black bg-gradient-to-r from-pink-600 to-indigo-600 bg-clip-text text-transparent mb-2">03</div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-1">Création & Code</h3>
+                    <p class="text-slate-600 text-sm">Nous programmons votre site de manière optimisée pour toute plateforme.</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 transition-transform duration-300 hover:scale-105 shadow-sm reveal" :class="{ 'active': shown }" style="transition-delay: 400ms;">
+                    <div class="text-4xl font-black bg-gradient-to-r from-indigo-600 to-pink-600 bg-clip-text text-transparent mb-2">04</div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-1">Mise en ligne</h3>
+                    <p class="text-slate-600 text-sm">Nous raccordons votre nom de domaine, assurons les tests de sécurité et publions le site.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="garanties" class="py-20 relative overflow-hidden z-10" x-data="{ lobbyistsShown: false }" x-intersect.once="lobbyistsShown = true">
+        <div class="absolute inset-0 bg-slate-50 border-y border-slate-100 backdrop-blur-md"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <div class="reveal" :class="{ 'active': lobbyistsShown }">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 mb-6 border border-indigo-100">
+                        🛡️ Zéro Risque & Délais Garantis
+                    </span>
+                    <h2 class="text-3xl font-black tracking-tight sm:text-4xl leading-tight text-slate-900">
+                        Votre site livré rapidement, ou <span class="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">100% remboursé</span>.
+                    </h2>
+                    <p class="mt-4 text-lg text-slate-600 leading-relaxed">
+                        Parce qu'un projet web ne doit pas traîner en longueur, nous nous engageons sur des délais stricts. De plus, nous offrons une garantie unique sur le marché.
+                    </p>
+                </div>
+                <div class="mt-12 lg:mt-0 grid gap-6 sm:grid-cols-2">
+                    <div class="bg-white border border-slate-100 p-6 rounded-2xl shadow-xl shadow-slate-200/50 transition-transform duration-300 hover:scale-102 reveal" :class="{ 'active': lobbyistsShown }" style="transition-delay: 200ms;">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 mb-4 shadow-inner">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-1">Délais de livraison</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Comptez <strong>7 jours</strong> pour un Site Vitrine et <strong>15 jours</strong> pour une Boutique en Ligne après validation.
+                        </p>
+                    </div>
+                    <div class="bg-white border border-slate-100 p-6 rounded-2xl shadow-xl shadow-slate-200/50 transition-transform duration-300 hover:scale-102 reveal" :class="{ 'active': lobbyistsShown }" style="transition-delay: 350ms;">
+                        <div class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center text-purple-600 mb-4 shadow-inner">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-1">Satisfait ou Remboursé</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Si la maquette initiale ne correspond absolument pas à vos attentes lors de la première phase, nous vous remboursons.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 relative z-10" x-data="{ shown: false }" x-intersect.once="shown = true">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 reveal" :class="{ 'active': shown }">
+            <div class="bg-white/5 rounded-3xl p-8 sm:p-12 shadow-2xl backdrop-blur-md relative overflow-hidden border border-white/10">
+                <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div class="relative z-10">
+                    <div class="text-center max-w-2xl mx-auto mb-10">
+                        <h2 class="text-3xl font-black text-white sm:text-4xl">Demandez votre devis gratuit</h2>
+                        <p class="mt-3 text-slate-300">Décrivez brièvement votre besoin. Notre équipe vous répond sous 24h.</p>
+                    </div>
+
+                    <div id="successMessage" class="hidden mb-6 p-4 rounded-xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-sm text-center font-medium">
+                        🎉 Votre demande de devis a bien été transmise. Nous vous recontactons sous 24 heures.
+                    </div>
+
+                    <form id="leadForm" class="space-y-6">
+                        <div class="grid gap-6 sm:grid-cols-2">
+                            <div>
+                                <label for="fullname" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Nom Complet *</label>
+                                <input type="text" id="fullname" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-400 focus:bg-slate-900/40 transition-all placeholder-slate-500 text-sm shadow-inner" placeholder="Ex: Julien Laurent">
+                            </div>
+                            <div>
+                                <label for="company" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Entreprise / Activité</label>
+                                <input type="text" id="company" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-400 focus:bg-slate-900/40 transition-all placeholder-slate-500 text-sm shadow-inner" placeholder="Ex: Boulangerie Laurent">
+                            </div>
+                        </div>
+
+                        <div class="grid gap-6 sm:grid-cols-2">
+                            <div>
+                                <label for="email" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Adresse Email *</label>
+                                <input type="email" id="email" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-400 focus:bg-slate-900/40 transition-all placeholder-slate-500 text-sm shadow-inner" placeholder="julien@exemple.fr">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Numéro de Téléphone *</label>
+                                <input type="tel" id="phone" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-400 focus:bg-slate-900/40 transition-all placeholder-slate-500 text-sm shadow-inner" placeholder="Ex: 06 00 00 00 00">
+                            </div>
+                        </div>
+
+                        <div class="grid gap-6 sm:grid-cols-2">
+                            <div>
+                                <label for="projectType" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Type de projet *</label>
+                                <select id="projectType" required class="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-400 transition-all text-sm shadow-inner focus:ring-2 focus:ring-indigo-950">
+                                    <option value="" disabled selected class="text-slate-500">Choisissez une option</option>
+                                    <option value="vitrine" class="text-indigo-400 font-semibold bg-slate-900">Offre Débutant</option>
+                                    <option value="ecommerce" class="text-purple-400 font-semibold bg-slate-900">Offre Professionnelle</option>
+                                    <option value="maintenance" class="text-pink-400 font-semibold bg-slate-900">Maintenance de Site Web</option>
+                                    <option value="refonte" class="text-slate-300 font-semibold bg-slate-900">Refonte / Modernisation</option>
+                                    <option value="autre" class="text-slate-300 font-semibold bg-slate-900">Autre demande spécifique</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="budget" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Tranche de Budget *</label>
+                                <select id="budget" required class="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-400 transition-all text-sm shadow-inner focus:ring-2 focus:ring-indigo-950">
+                                    <option value="" disabled selected class="text-slate-500">Sélectionnez une estimation</option>
+                                    <option value="maintenance-plan" class="text-pink-400 font-semibold bg-slate-900">Plan Maintenance (Mensuel)</option>
+                                    <option value="490-990" class="text-indigo-400 font-semibold bg-slate-900">Entre 490€ et 990€</option>
+                                    <option value="990-2000" class="text-purple-400 font-semibold bg-slate-900">Entre 990€ et 2000€</option>
+                                    <option value="more-2000" class="text-slate-300 font-semibold bg-slate-900">Plus de 2000€</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="description" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Vos besoins *</label>
+                            <textarea id="description" rows="4" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-400 focus:bg-slate-900/40 transition-all placeholder-slate-500 text-sm shadow-inner" placeholder="Nombre de pages, site existant, objectifs..."></textarea>
+                        </div>
+
+                        <div class="pt-4">
+                            <button type="submit" class="btn-shine w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-bold py-4 px-6 rounded-xl shadow-lg shadow-indigo-500/20 hover:brightness-110 transition-all text-base cursor-pointer transform hover:scale-[1.01]">
+                                Envoyer ma demande de devis
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-950 text-slate-400 py-12 relative z-10 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-8 md:grid-cols-3">
+            <div>
+                <span class="text-xl font-black tracking-tight text-white">Voct<span class="text-indigo-400">ra</span></span>
+                <p class="mt-4 text-sm leading-relaxed text-slate-400">Conception de sites internet de qualité professionnelle adaptés aux budgets des créateurs et des petites entreprises.</p>
+            </div>
+            <div>
+                <h4 class="text-white text-sm font-bold uppercase tracking-wider mb-4">Liens Utiles</h4>
+                <ul class="space-y-2 text-sm text-slate-400">
+                    <li><a href="#" class="hover:text-indigo-400 transition-colors">Accueil</a></li>
+                    <li><a href="#avantages" class="hover:text-indigo-400 transition-colors">Avantages</a></li>
+                    <li><a href="#services" class="hover:text-indigo-400 transition-colors">Tarifs</a></li>
+                    <li><a href="#contact" class="hover:text-indigo-400 transition-colors">Demander un devis</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white text-sm font-bold uppercase tracking-wider mb-4">Contact & Légal</h4>
+                <p class="text-sm text-slate-300">contact@voctra.fr</p>
+                <div class="mt-4 pt-4 border-t border-slate-800 text-xs text-slate-500">
+                    <button @click="legalModalOpen = true" class="text-slate-400 hover:text-indigo-400 transition-colors cursor-pointer bg-transparent border-none p-0 inline font-medium">Mentions Légales</button> | <span>© 2026 Voctra.</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div 
+        x-show="legalModalOpen" 
+        class="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-md"
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in duration-150"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+        style="display: none;"
+        @keydown.escape.window="legalModalOpen = false"
+    >
+        <div class="bg-white border border-slate-100 rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-y-auto shadow-2xl p-6 sm:p-8 relative text-slate-600 text-sm leading-relaxed" @click.away="legalModalOpen = false">
+            <button @click="legalModalOpen = false" class="absolute top-4 right-4 text-slate-400 hover:text-pink-600 focus:outline-none cursor-pointer transition-colors duration-200">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <h3 class="text-2xl font-black text-slate-900 mb-6 border-b border-slate-100 pb-3">Mentions Légales & Droits</h3>
+            <div class="space-y-5 text-xs">
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-1 uppercase tracking-wider text-[10px]">1. Éditeur du site</h4>
+                    <p><strong>Propriétaire du site :</strong> Voctra SAS — Contact : contact@voctra.fr</p>
+                    <p><strong>Hébergement :</strong> o2switch (Clermont-Ferrand, France).</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-1 uppercase tracking-wider text-[10px]">2. Propriété intellectuelle & Respect des droits</h4>
+                    <p>L'ensemble de ce site, y compris les textes, logos, graphismes, images et animations, relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés. Toute reproduction, représentation, modification ou adaptation totale ou partielle des éléments du site sans accord écrit préalable est strictement interdite.</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-1 uppercase tracking-wider text-[10px]">3. Protection des données personnelles (RGPD)</h4>
+                    <p>Conformément à la réglementation européenne sur la protection des données (RGPD), les informations recueillies via le formulaire de contact (nom, email, téléphone, etc.) font l'objet d'un traitement informatique destiné exclusivement à la gestion de vos demandes de devis et à la relation commerciale.</p>
+                    <p class="mt-1">Ces données ne sont jamais cédées ou vendues à des tiers. Vous disposez d'un droit d'accès, de rectification, de portabilité et de suppression des données vous concernant en vous adressant directement à : <strong>contact@voctra.fr</strong>.</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-1 uppercase tracking-wider text-[10px]">4. Cookies et Responsabilité</h4>
+                    <p>Ce site utilise des cookies techniques légers indispensables à votre confort de navigation et à la mémorisation de vos préférences. L'éditeur du site met tout en œuvre pour offrir des informations vérifiées mais ne saurait être tenu pour responsable des omissions, des inexactitudes ou des carences dans la mise à jour.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Gestion formulaire
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const successMsg = document.getElementById('successMessage');
+            successMsg.classList.remove('hidden');
+            document.getElementById('leadForm').reset();
+            successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+    </script>
+</body>
+</html>
