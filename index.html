@@ -106,11 +106,12 @@
                 <nav class="hidden md:flex space-x-8 items-center">
                     <a href="#" class="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-colors">Accueil</a>
                     <a href="#avantages" class="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-colors">Avantages</a>
-                    <a href="#services" class="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-colors">Services & Tarifs</a>
-                    <a href="#processus" class="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-colors">Notre Processus</a>
+                    <a href="#services" class="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-colors">Tarifs</a>
+                    <a href="#processus" class="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-colors">Processus</a>
+                    <a href="#a-propos" class="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-colors">À Propos</a>
                     <a href="#faq" class="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-colors">FAQ</a>
                     <a href="#contact" class="btn-shine inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-bold rounded-xl text-white bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:brightness-110 transition-all shadow-lg shadow-indigo-600/20 transform hover:scale-105">
-                        Demander un devis gratuit
+                        Demander un devis
                     </a>
                 </nav>
 
@@ -131,6 +132,7 @@
             <a href="#avantages" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors" @click="mobileMenuOpen = false">Avantages</a>
             <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors" @click="mobileMenuOpen = false">Services & Tarifs</a>
             <a href="#processus" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors" @click="mobileMenuOpen = false">Notre Processus</a>
+            <a href="#a-propos" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors" @click="mobileMenuOpen = false">À Propos</a>
             <a href="#faq" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors" @click="mobileMenuOpen = false">FAQ</a>
             <a href="#contact" class="block w-full text-center px-4 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-xl mt-4 hover:brightness-110 shadow-md transition-all" @click="mobileMenuOpen = false">Demander un devis gratuit</a>
         </div>
@@ -320,6 +322,59 @@
         </div>
     </section>
 
+    <section id="a-propos" class="py-20 relative z-10" x-data="{ shown: false }" x-intersect.once="shown = true">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <div class="reveal" :class="{ 'active': shown }">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-pink-50 text-pink-700 mb-6 border border-pink-100">
+                        👋 Qui sommes-nous ?
+                    </span>
+                    <h2 class="text-3xl font-black tracking-tight sm:text-4xl leading-tight text-slate-900">
+                        Démocratiser le web pour les <span class="bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">indépendants</span>.
+                    </h2>
+                    <p class="mt-6 text-lg text-slate-600 leading-relaxed">
+                        Fatigués de voir les créateurs d'entreprise payer des milliers d'euros pour des sites génériques ou, à l'inverse, se débattre seuls avec des outils de création complexes, nous avons lancé Voctra avec une mission simple.
+                    </p>
+                    <p class="mt-4 text-lg text-slate-600 leading-relaxed">
+                        Nous voulons offrir la qualité d'une agence haut de gamme, des performances techniques irréprochables et un accompagnement humain, le tout à un tarif juste, transparent et sans aucun abonnement captif.
+                    </p>
+                    <div class="mt-8 flex items-center space-x-8">
+                        <div class="flex flex-col">
+                            <span class="text-3xl font-black text-indigo-600">100%</span>
+                            <span class="text-sm font-semibold text-slate-500">Transparence</span>
+                        </div>
+                        <div class="w-px h-12 bg-slate-200"></div>
+                        <div class="flex flex-col">
+                            <span class="text-3xl font-black text-purple-600">0€</span>
+                            <span class="text-sm font-semibold text-slate-500">Frais cachés</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-16 lg:mt-0 reveal" :class="{ 'active': shown }" style="transition-delay: 200ms;">
+                    <div class="relative rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl aspect-[4/3] flex items-center justify-center group">
+                        <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-pink-500/20 opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        
+                        <svg class="w-32 h-32 text-white/10 group-hover:scale-110 transition-transform duration-700" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                        
+                        <div class="absolute top-1/4 left-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 shadow-xl transform -rotate-6 animate-blob-1">
+                            <div class="w-20 h-2 bg-white/30 rounded-full mb-2"></div>
+                            <div class="w-16 h-2 bg-white/20 rounded-full"></div>
+                        </div>
+                        <div class="absolute bottom-1/4 right-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 shadow-xl transform rotate-6 animate-blob-2">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-6 h-6 rounded-full bg-pink-500/50"></div>
+                                <div class="w-12 h-2 bg-white/30 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="garanties" class="py-20 relative overflow-hidden z-10" x-data="{ lobbyistsShown: false }" x-intersect.once="lobbyistsShown = true">
         <div class="absolute inset-0 bg-slate-50 border-y border-slate-100 backdrop-blur-md"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -359,74 +414,46 @@
         </div>
     </section>
 
-    <section id="faq" class="py-24 relative z-10" x-data="{ shown: false }" x-intersect.once="shown = true">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 reveal" :class="{ 'active': shown }">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-purple-50 text-purple-700 mb-4 border border-purple-100">
-                    💡 Questions Fréquentes
-                </span>
-                <h2 class="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">Une question ? Nous y répondons.</h2>
-                <p class="mt-4 text-lg text-slate-600">Voici les réponses aux interrogations les plus fréquentes de nos clients.</p>
+    <section id="faq" class="py-24 bg-white relative z-10" x-data="{ activeSection: 1 }">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">Questions Fréquentes</h2>
+            <p class="mt-4 text-lg text-slate-600">Pourquoi choisir notre accompagnement sur le long terme ?</p>
+        </div>
+
+        <div class="space-y-4">
+            <div class="border border-slate-200 rounded-xl overflow-hidden">
+                <button @click="activeSection = activeSection === 1 ? null : 1" class="w-full flex items-center justify-between p-4 bg-slate-50 text-left font-bold text-slate-900 hover:bg-slate-100 transition-colors">
+                    <span>Pourquoi souscrire à votre offre de maintenance dès la création ?</span>
+                    <svg class="w-4 h-4 transform transition-transform duration-200" :class="activeSection === 1 ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="activeSection === 1" x-transition class="p-4 bg-white border-t border-slate-50 text-slate-600 leading-relaxed">
+                    Souscrire dès le départ, c'est l'assurance d'une tranquillité totale. Nous gérons pour vous l'hébergement et la sécurité technique, vous permettant de vous concentrer uniquement sur votre cœur de métier sans vous soucier des mises à jour ou des risques de piratage.
+                </div>
             </div>
 
-            <div class="space-y-4 text-sm text-slate-600 reveal" :class="{ 'active': shown }" x-data="{ activeFaq: null }">
-                
-                <div class="border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm transition-all duration-200 bg-white">
-                    <button 
-                        @click="activeFaq = activeFaq === 1 ? null : 1" 
-                        class="w-full flex justify-between items-center p-5 hover:bg-slate-50 text-left font-bold text-slate-900 transition-colors cursor-pointer"
-                    >
-                        <span>Est-ce que je serai le seul et unique propriétaire de mon site web ?</span>
-                        <svg class="w-4 h-4 transform transition-transform duration-200 text-indigo-600 shrink-0 ml-4" :class="activeFaq === 1 ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div x-show="activeFaq === 1" x-transition class="p-5 bg-white border-t border-slate-100 leading-relaxed space-y-2">
-                        <p><strong>Oui, à 100%.</strong> Contrairement à d'autres agences qui vous imposent un abonnement mensuel captif, chez Voctra, une fois la facture finale réglée, le site vous appartient entièrement. Vous disposez de l'ensemble des droits sur le code, les visuels et les textes.</p>
-                    </div>
+            <div class="border border-slate-200 rounded-xl overflow-hidden">
+                <button @click="activeSection = activeSection === 2 ? null : 2" class="w-full flex items-center justify-between p-4 bg-slate-50 text-left font-bold text-slate-900 hover:bg-slate-100 transition-colors">
+                    <span>Pourquoi votre hébergement est-il plus avantageux qu'une solution externe ?</span>
+                    <svg class="w-4 h-4 transform transition-transform duration-200" :class="activeSection === 2 ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="activeSection === 2" x-transition class="p-4 bg-white border-t border-slate-50 text-slate-600 leading-relaxed">
+                    Notre hébergement est optimisé spécifiquement pour les sites que nous concevons. Cela garantit une rapidité de chargement supérieure, une meilleure stabilité et surtout une réactivité immédiate de notre équipe en cas d'anomalie, chose quasi impossible avec un hébergeur mutualisé classique.
                 </div>
+            </div>
 
-                <div class="border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm transition-all duration-200 bg-white">
-                    <button 
-                        @click="activeFaq = activeFaq === 2 ? null : 2" 
-                        class="w-full flex justify-between items-center p-5 hover:bg-slate-50 text-left font-bold text-slate-900 transition-colors cursor-pointer"
-                    >
-                        <span>Comment se passe la gestion de l'hébergement et du nom de domaine ?</span>
-                        <svg class="w-4 h-4 transform transition-transform duration-200 text-indigo-600 shrink-0 ml-4" :class="activeFaq === 2 ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div x-show="activeFaq === 2" x-transition class="p-5 bg-white border-t border-slate-100 leading-relaxed">
-                        <p>Nous vous accompagnons dans la réservation de votre nom de domaine (ex: monentreprise.fr) et de votre serveur chez un hébergeur de confiance (comme o2switch). Tout est enregistré **à votre nom**, vous garantissant une indépendance totale.</p>
-                    </div>
+            <div class="border border-slate-200 rounded-xl overflow-hidden">
+                <button @click="activeSection = activeSection === 3 ? null : 3" class="w-full flex items-center justify-between p-4 bg-slate-50 text-left font-bold text-slate-900 hover:bg-slate-100 transition-colors">
+                    <span>Quels risques j'encours si je ne prends pas votre maintenance ?</span>
+                    <svg class="w-4 h-4 transform transition-transform duration-200" :class="activeSection === 3 ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="activeSection === 3" x-transition class="p-4 bg-white border-t border-slate-50 text-slate-600 leading-relaxed">
+                    Sans maintenance professionnelle, votre site est exposé aux failles de sécurité, aux problèmes de compatibilité et aux pannes imprévues. En cas d'incident, la remise en état est souvent complexe, coûteuse et peut entraîner une perte de données ou de visibilité. Notre offre prévient ces risques proactivement.
                 </div>
-
-                <div class="border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm transition-all duration-200 bg-white">
-                    <button 
-                        @click="activeFaq = activeFaq === 3 ? null : 3" 
-                        class="w-full flex justify-between items-center p-5 hover:bg-slate-50 text-left font-bold text-slate-900 transition-colors cursor-pointer"
-                    >
-                        <span>Pourrai-je modifier les textes et les photos moi-même après la livraison ?</span>
-                        <svg class="w-4 h-4 transform transition-transform duration-200 text-indigo-600 shrink-0 ml-4" :class="activeFaq === 3 ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div x-show="activeFaq === 3" x-transition class="p-5 bg-white border-t border-slate-100 leading-relaxed">
-                        <p>Absolument. Selon l'offre choisie, nous mettons en place des outils simples ou une interface d'administration claire (CMS) qui vous permet de changer une image, de corriger un texte ou d'ajouter une actualité en toute autonomie, sans compétences en programmation.</p>
-                    </div>
-                </div>
-
-                <div class="border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm transition-all duration-200 bg-white">
-                    <button 
-                        @click="activeFaq = activeFaq === 4 ? null : 4" 
-                        class="w-full flex justify-between items-center p-5 hover:bg-slate-50 text-left font-bold text-slate-900 transition-colors cursor-pointer"
-                    >
-                        <span>Quels sont les frais à prévoir après la création du site ?</span>
-                        <svg class="w-4 h-4 transform transition-transform duration-200 text-indigo-600 shrink-0 ml-4" :class="activeFaq === 4 ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div x-show="activeFaq === 4" x-transition class="p-5 bg-white border-t border-slate-100 leading-relaxed">
-                        <p>Les seuls coûts récurrents obligatoires sont l'abonnement pour votre nom de domaine et votre hébergement web (généralement entre 40€ et 80€ **par an** selon les options choisies, payables directement à l'hébergeur). Aucune redevance n'est due à Voctra.</p>
-                    </div>
-                </div>
-
             </div>
         </div>
-    </section>
-
+    </div>
+</section>
     <section id="contact" class="py-24 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 relative z-10" x-data="{ shown: false }" x-intersect.once="shown = true">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 reveal" :class="{ 'active': shown }">
             <div class="bg-white/5 rounded-3xl p-8 sm:p-12 shadow-2xl backdrop-blur-md relative overflow-hidden border border-white/10">
@@ -517,6 +544,7 @@
                     <li><a href="#" class="hover:text-indigo-400 transition-colors">Accueil</a></li>
                     <li><a href="#avantages" class="hover:text-indigo-400 transition-colors">Avantages</a></li>
                     <li><a href="#services" class="hover:text-indigo-400 transition-colors">Tarifs</a></li>
+                    <li><a href="#a-propos" class="hover:text-indigo-400 transition-colors">À Propos</a></li>
                     <li><a href="#faq" class="hover:text-indigo-400 transition-colors">FAQ</a></li>
                     <li><a href="#contact" class="hover:text-indigo-400 transition-colors">Demander un devis</a></li>
                 </ul>
@@ -524,7 +552,7 @@
             <div>
                 <h4 class="text-white text-sm font-bold uppercase tracking-wider mb-4">Contact & Légal</h4>
                 <p class="text-sm text-slate-300">
-                    <a href="mailto:contact@voctra.fr" class="hover:text-indigo-400 transition-colors font-medium">contact@voctra.fr</a>
+                    <a href="mailto:voctra@outlook.com" class="hover:text-indigo-400 transition-colors font-medium">voctra@outlook.com</a>
                 </p>
                 <div class="mt-4 pt-4 border-t border-slate-800 text-xs text-slate-500">
                     <button @click="legalModalOpen = true" class="text-slate-400 hover:text-indigo-400 transition-colors cursor-pointer bg-transparent border-none p-0 inline font-medium">Mentions Légales</button> | <span>© 2026 Voctra.</span>
@@ -563,7 +591,7 @@
                         <svg class="w-4 h-4 transform transition-transform duration-200" :class="activeSection === 1 ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div x-show="activeSection === 1" x-transition class="p-4 bg-white border-t border-slate-50 space-y-2">
-                        <p><strong>Propriétaire du site :</strong> Voctra SAS — Contact : <a href="mailto:contact@voctra.fr" class="text-indigo-600 hover:underline font-medium">contact@voctra.fr</a></p>
+                        <p><strong>Propriétaire du site :</strong> Voctra SAS — Contact : <a href="mailto:voctra@outlook.com" class="text-indigo-600 hover:underline font-medium">voctra@outlook.com</a></p>
                         <p><strong>Hébergement :</strong> o2switch (Clermont-Ferrand, France).</p>
                     </div>
                 </div>
@@ -591,7 +619,7 @@
                     </button>
                     <div x-show="activeSection === 3" x-transition class="p-4 bg-white border-t border-slate-50 space-y-3">
                         <p class="leading-relaxed">Conformément à la réglementation européenne sur la protection des données (RGPD), les informations recueillies via le formulaire de contact (nom, email, téléphone, etc.) font l'objet d'un traitement informatique destiné exclusivement à la gestion de vos demandes de devis et à la relation commerciale.</p>
-                        <p class="leading-relaxed">Ces données ne sont jamais cédées ou vendues à des tiers. Vous disposez d'un droit d'accès, de rectification, de portabilité et de suppression des données vous concernant en vous adressant directement à : <strong><a href="mailto:contact@voctra.fr" class="text-indigo-600 hover:underline">contact@voctra.fr</a></strong>.</p>
+                        <p class="leading-relaxed">Ces données ne sont jamais cédées ou vendues à des tiers. Vous disposez d'un droit d'accès, de rectification, de portabilité et de suppression des données vous concernant en vous adressant directement à : <strong><a href="mailto:voctra@outlook.com" class="text-indigo-600 hover:underline">voctra@outlook.com</a></strong>.</p>
                     </div>
                 </div>
 
