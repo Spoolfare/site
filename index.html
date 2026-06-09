@@ -323,52 +323,49 @@
     </section>
 
     <section id="a-propos" class="py-20 relative z-10" x-data="{ shown: false }" x-intersect.once="shown = true">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
-                <div class="reveal" :class="{ 'active': shown }">
-                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-pink-50 text-pink-700 mb-6 border border-pink-100">
-                        👋 Qui sommes-nous ?
-                    </span>
-                    <h2 class="text-3xl font-black tracking-tight sm:text-4xl leading-tight text-slate-900">
-                        Démocratiser le web pour les <span class="bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">indépendants</span>.
-                    </h2>
-                    <p class="mt-6 text-lg text-slate-600 leading-relaxed">
-                        Fatigués de voir les créateurs d'entreprise payer des milliers d'euros pour des sites génériques ou, à l'inverse, se débattre seuls avec des outils de création complexes, nous avons lancé Voctra avec une mission simple.
-                    </p>
-                    <p class="mt-4 text-lg text-slate-600 leading-relaxed">
-                        Nous voulons offrir la qualité d'une agence haut de gamme, des performances techniques irréprochables et un accompagnement humain, le tout à un tarif juste, transparent et sans aucun abonnement captif.
-                    </p>
-                    <div class="mt-8 flex items-center space-x-8">
-                        <div class="flex flex-col">
-                            <span class="text-3xl font-black text-indigo-600">100%</span>
-                            <span class="text-sm font-semibold text-slate-500">Transparence</span>
-                        </div>
-                        <div class="w-px h-12 bg-slate-200"></div>
-                        <div class="flex flex-col">
-                            <span class="text-3xl font-black text-purple-600">0€</span>
-                            <span class="text-sm font-semibold text-slate-500">Frais cachés</span>
-                        </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+            <div class="reveal" :class="{ 'active': shown }">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-pink-50 text-pink-700 mb-6 border border-pink-100">
+                    💡 La réalité du marché actuel
+                </span>
+                <h2 class="text-3xl font-black tracking-tight sm:text-4xl leading-tight text-slate-900">
+                    Aujourd'hui, une entreprise sans site web est une entreprise <span class="bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">invisible</span>.
+                </h2>
+                <p class="mt-6 text-lg text-slate-600 leading-relaxed">
+                    Avant même de passer votre porte ou de vous appeler, vos futurs clients effectuent une recherche sur Google. Ne pas avoir de site web professionnel en 2026, c'est laisser vos concurrents capter votre clientèle et mettre en doute votre sérieux.
+                </p>
+                <p class="mt-4 text-lg text-slate-600 leading-relaxed">
+                    Chez <strong>Voctra</strong>, nous pensons que chaque indépendant mérite de posséder sa propre vitrine numérique. Nous transformons votre expertise en une présence en ligne captivante, rassurante et performante, pour vous aider à convertir vos visiteurs en partenaires de confiance.
+                </p>
+                
+                <div class="mt-8 flex items-center space-x-8">
+                    <div class="flex flex-col">
+                        <span class="text-3xl font-black text-indigo-600">97%</span>
+                        <span class="text-sm font-semibold text-slate-500">des clients cherchent en ligne</span>
+                    </div>
+                    <div class="w-px h-12 bg-slate-200"></div>
+                    <div class="flex flex-col">
+                        <span class="text-3xl font-black text-purple-600">0€</span>
+                        <span class="text-sm font-semibold text-slate-500">Frais cachés</span>
                     </div>
                 </div>
-                
-                <div class="mt-16 lg:mt-0 reveal" :class="{ 'active': shown }" style="transition-delay: 200ms;">
-                    <div class="relative rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl aspect-[4/3] flex items-center justify-center group">
-                        <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-pink-500/20 opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        
-                        <svg class="w-32 h-32 text-white/10 group-hover:scale-110 transition-transform duration-700" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                        </svg>
-                        
-                        <div class="absolute top-1/4 left-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 shadow-xl transform -rotate-6 animate-blob-1">
-                            <div class="w-20 h-2 bg-white/30 rounded-full mb-2"></div>
-                            <div class="w-16 h-2 bg-white/20 rounded-full"></div>
-                        </div>
-                        <div class="absolute bottom-1/4 right-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 shadow-xl transform rotate-6 animate-blob-2">
-                            <div class="flex items-center space-x-2">
-                                <div class="w-6 h-6 rounded-full bg-pink-500/50"></div>
-                                <div class="w-12 h-2 bg-white/30 rounded-full"></div>
-                            </div>
-                        </div>
+            </div>
+            
+            <div class="mt-16 lg:mt-0 reveal" :class="{ 'active': shown }" style="transition-delay: 200ms;">
+                <div class="relative rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl aspect-[4/3] flex items-center justify-center group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-pink-500/20 opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
+                    <svg class="w-32 h-32 text-white/10 group-hover:scale-110 transition-transform duration-700" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0zM2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    
+                    <div class="absolute top-1/4 left-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 shadow-xl transform -rotate-6 animate-blob-1">
+                        <div class="text-white text-xs font-bold">"Où sont-ils ?"</div>
+                    </div>
+                    <div class="absolute bottom-1/4 right-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 shadow-xl transform rotate-6 animate-blob-2">
+                        <div class="text-white text-xs font-bold">"Ah, les voilà !"</div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -453,7 +450,7 @@
             </div>
         </div>
     </div>
-</section>
+    </section>
     <section id="contact" class="py-24 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 relative z-10" x-data="{ shown: false }" x-intersect.once="shown = true">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 reveal" :class="{ 'active': shown }">
             <div class="bg-white/5 rounded-3xl p-8 sm:p-12 shadow-2xl backdrop-blur-md relative overflow-hidden border border-white/10">
