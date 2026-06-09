@@ -241,12 +241,12 @@
                     <div class="flex flex-col justify-between h-full w-full">
                         <div>
                             <h3 class="text-xl font-bold text-slate-900 flex items-center justify-between">Offre Professionnelle ✨</h3>
-                            <p class="mt-2 text-slate-500 text-sm">Lancez votre site professionnel sur le web and commencez à vendre vos produits and services partout.</p>
+                            <p class="mt-2 text-slate-500 text-sm">Lancez votre site professionnel sur le web et commencez à vendre vos produits et services partout.</p>
                             <p class="mt-6"><span class="text-3xl font-black bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">990€</span></p>
                             <ul class="mt-8 space-y-4 text-sm text-slate-700">
                                 <li class="flex items-center"><svg class="w-4 h-4 text-indigo-600 mr-2 shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Un site contenant 6 à 8 pages</li>
                                 <li class="flex items-center"><svg class="w-4 h-4 text-indigo-600 mr-2 shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Utilisations de base de données</li>
-                                <li class="flex items-center"><svg class="w-4 h-4 text-indigo-600 mr-2 shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Configuration</li>
+                                <li class="flex items-center"><svg class="w-4 h-4 text-indigo-600 mr-2 shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Configuration complète</li>
                             </ul>
                         </div>
                         <a href="#contact" class="btn-shine mt-8 block w-full text-center px-4 py-3 text-sm font-bold rounded-xl text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:brightness-110 shadow-md transition-all">Choisir cette offre</a>
@@ -276,7 +276,7 @@
                             <p class="mt-2 text-slate-500 text-sm">Gardez votre site sécurisé, à jour et performant tout au long de l'année.</p>
                             <p class="mt-6"><span class="text-3xl font-black text-slate-900">À partir de 49€<span class="text-xs font-normal text-slate-400">/mois</span></span></p>
                             <ul class="mt-8 space-y-4 text-sm text-slate-600">
-                                <li class="flex items-center"><svg class="w-4 h-4 text-indigo-600 mr-2 shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Mises à jour</li>
+                                <li class="flex items-center"><svg class="w-4 h-4 text-indigo-600 mr-2 shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Mises à jour régulières</li>
                                 <li class="flex items-center"><svg class="w-4 h-4 text-indigo-600 mr-2 shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Sauvegardes automatisées</li>
                                 <li class="flex items-center"><svg class="w-4 h-4 text-indigo-600 mr-2 shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Surveillance de sécurité</li>
                             </ul>
@@ -454,7 +454,9 @@
             </div>
             <div>
                 <h4 class="text-white text-sm font-bold uppercase tracking-wider mb-4">Contact & Légal</h4>
-                <p class="text-sm text-slate-300">contact@voctra.fr</p>
+                <p class="text-sm text-slate-300">
+                    <a href="mailto:voctra@outlook.com" class="hover:text-indigo-400 transition-colors font-medium">voctra@outlook.com</a>
+                </p>
                 <div class="mt-4 pt-4 border-t border-slate-800 text-xs text-slate-500">
                     <button @click="legalModalOpen = true" class="text-slate-400 hover:text-indigo-400 transition-colors cursor-pointer bg-transparent border-none p-0 inline font-medium">Mentions Légales</button> | <span>© 2026 Voctra.</span>
                 </div>
@@ -474,39 +476,75 @@
         style="display: none;"
         @keydown.escape.window="legalModalOpen = false"
     >
-        <div class="bg-white border border-slate-100 rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-y-auto shadow-2xl p-6 sm:p-8 relative text-slate-600 text-sm leading-relaxed" @click.away="legalModalOpen = false">
+        <div class="bg-white border border-slate-100 rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-y-auto shadow-2xl p-6 sm:p-8 relative text-slate-600" @click.away="legalModalOpen = false">
             <button @click="legalModalOpen = false" class="absolute top-4 right-4 text-slate-400 hover:text-pink-600 focus:outline-none cursor-pointer transition-colors duration-200">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
+            
             <h3 class="text-2xl font-black text-slate-900 mb-6 border-b border-slate-100 pb-3">Mentions Légales & Droits</h3>
-            <div class="space-y-5 text-xs">
-                <div>
-                    <h4 class="font-bold text-slate-900 mb-1 uppercase tracking-wider text-[10px]">1. Éditeur du site</h4>
-                    <p><strong>Propriétaire du site :</strong> Voctra SAS — Contact : contact@voctra.fr</p>
-                    <p><strong>Hébergement :</strong> o2switch (Clermont-Ferrand, France).</p>
+            
+            <div class="space-y-4 text-sm" x-data="{ activeSection: null }">
+                
+                <div class="border border-slate-100 rounded-xl overflow-hidden shadow-sm">
+                    <button 
+                        @click="activeSection = activeSection === 1 ? null : 1" 
+                        class="w-full flex justify-between items-center p-4 bg-slate-50 hover:bg-slate-100 text-left font-bold text-slate-900 transition-colors cursor-pointer"
+                    >
+                        <span>1. ÉDITEUR DU SITE</span>
+                        <svg class="w-4 h-4 transform transition-transform duration-200" :class="activeSection === 1 ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="activeSection === 1" x-transition class="p-4 bg-white border-t border-slate-50 space-y-2">
+                        <p><strong>Propriétaire du site :</strong> Voctra SAS — Contact : <a href="mailto:voctra@outlook.com" class="text-indigo-600 hover:underline font-medium">voctra@outlook.com</a></p>
+                        <p><strong>Hébergement :</strong> CloudFlare (France).</p>
+                    </div>
                 </div>
                 
-                <div>
-                    <h4 class="font-bold text-slate-900 mb-1 uppercase tracking-wider text-[10px]">2. Propriété intellectuelle & Respect des droits</h4>
-                    <p>L'ensemble de ce site, y compris les textes, logos, graphismes, images et animations, relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés. Toute reproduction, représentation, modification ou adaptation totale ou partielle des éléments du site sans accord écrit préalable est strictement interdite.</p>
+                <div class="border border-slate-100 rounded-xl overflow-hidden shadow-sm">
+                    <button 
+                        @click="activeSection = activeSection === 2 ? null : 2" 
+                        class="w-full flex justify-between items-center p-4 bg-slate-50 hover:bg-slate-100 text-left font-bold text-slate-900 transition-colors cursor-pointer"
+                    >
+                        <span>2. PROPRIÉTÉ INTELLECTUELLE & RESPECT DES DROITS</span>
+                        <svg class="w-4 h-4 transform transition-transform duration-200" :class="activeSection === 2 ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="activeSection === 2" x-transition class="p-4 bg-white border-t border-slate-50">
+                        <p class="leading-relaxed">L'ensemble de ce site, y compris les textes, logos, graphismes, images et animations, relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés. Toute reproduction, représentation, modification ou adaptation totale ou partielle des éléments du site sans accord écrit préalable est strictement interdite.</p>
+                    </div>
                 </div>
 
-                <div>
-                    <h4 class="font-bold text-slate-900 mb-1 uppercase tracking-wider text-[10px]">3. Protection des données personnelles (RGPD)</h4>
-                    <p>Conformément à la réglementation européenne sur la protection des données (RGPD), les informations recueillies via le formulaire de contact (nom, email, téléphone, etc.) font l'objet d'un traitement informatique destiné exclusivement à la gestion de vos demandes de devis et à la relation commerciale.</p>
-                    <p class="mt-1">Ces données ne sont jamais cédées ou vendues à des tiers. Vous disposez d'un droit d'accès, de rectification, de portabilité et de suppression des données vous concernant en vous adressant directement à : <strong>contact@voctra.fr</strong>.</p>
+                <div class="border border-slate-100 rounded-xl overflow-hidden shadow-sm">
+                    <button 
+                        @click="activeSection = activeSection === 3 ? null : 3" 
+                        class="w-full flex justify-between items-center p-4 bg-slate-50 hover:bg-slate-100 text-left font-bold text-slate-900 transition-colors cursor-pointer"
+                    >
+                        <span>3. PROTECTION DES DONNÉES PERSONNELLES (RGPD)</span>
+                        <svg class="w-4 h-4 transform transition-transform duration-200" :class="activeSection === 3 ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="activeSection === 3" x-transition class="p-4 bg-white border-t border-slate-50 space-y-3">
+                        <p class="leading-relaxed">Conformément à la réglementation européenne sur la protection des données (RGPD), les informations recueillies via le formulaire de contact (nom, email, téléphone, etc.) font l'objet d'un traitement informatique destiné exclusivement à la gestion de vos demandes de devis et à la relation commerciale.</p>
+                        <p class="leading-relaxed">Ces données ne sont jamais cédées ou vendues à des tiers. Vous disposez d'un droit d'accès, de rectification, de portabilité et de suppression des données vous concernant en vous adressant directement à : <strong><a href="mailto:voctra@outlook.com" class="text-indigo-600 hover:underline">voctra@outlook.com</a></strong>.</p>
+                    </div>
                 </div>
 
-                <div>
-                    <h4 class="font-bold text-slate-900 mb-1 uppercase tracking-wider text-[10px]">4. Cookies et Responsabilité</h4>
-                    <p>Ce site utilise des cookies techniques légers indispensables à votre confort de navigation et à la mémorisation de vos préférences. L'éditeur du site met tout en œuvre pour offrir des informations vérifiées mais ne saurait être tenu pour responsable des omissions, des inexactitudes ou des carences dans la mise à jour.</p>
+                <div class="border border-slate-100 rounded-xl overflow-hidden shadow-sm">
+                    <button 
+                        @click="activeSection = activeSection === 4 ? null : 4" 
+                        class="w-full flex justify-between items-center p-4 bg-slate-50 hover:bg-slate-100 text-left font-bold text-slate-900 transition-colors cursor-pointer"
+                    >
+                        <span>4. COOKIES ET RESPONSABILITÉ</span>
+                        <svg class="w-4 h-4 transform transition-transform duration-200" :class="activeSection === 4 ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="activeSection === 4" x-transition class="p-4 bg-white border-t border-slate-50">
+                        <p class="leading-relaxed">Ce site utilise des cookies techniques légers indispensables à votre confort de navigation et à la mémorisation de vos préférences. L'éditeur du site met tout en œuvre pour offrir des informations vérifiées mais ne saurait être tenu pour responsable des omissions, des inexactitudes ou des carences dans la mise à jour.</p>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
 
     <script>
-        // Gestion formulaire
+        // Gestion de la soumission du formulaire
         document.getElementById('leadForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const successMsg = document.getElementById('successMessage');
