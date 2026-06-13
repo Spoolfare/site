@@ -138,8 +138,9 @@
         </div>
     </header>
 
-    <section class="relative py-24 lg:py-36 flex items-center justify-center text-center z-10">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <section class="relative py-24 lg:py-36 flex items-center justify-center text-center z-10 overflow-hidden">
+        <div class="absolute inset-0 opacity-[0.05] pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22 viewBox=%220 0 300 300%22%3E%3Ctext x=%2210%22 y=%2240%22 font-family=%22Arial, sans-serif%22 font-weight=%22900%22 font-size=%2230%22 fill=%22%234f46e5%22 transform=%22rotate(-15 60 30)%22%3EVoctra%3C/text%3E%3Ctext x=%22160%22 y=%2230%22 font-family=%22Arial, sans-serif%22 font-weight=%22900%22 font-size=%2222%22 fill=%22%23a855f7%22 transform=%22rotate(20 200 20)%22%3EVoctra%3C/text%3E%3Ctext x=%2220%22 y=%22140%22 font-family=%22Arial, sans-serif%22 font-weight=%22900%22 font-size=%2238%22 fill=%22%23ec4899%22 transform=%22rotate(35 70 130)%22%3EVoctra%3C/text%3E%3Ctext x=%22170%22 y=%22170%22 font-family=%22Arial, sans-serif%22 font-weight=%22900%22 font-size=%2226%22 fill=%22%234f46e5%22 transform=%22rotate(-40 210 160)%22%3EVoctra%3C/text%3E%3Ctext x=%2280%22 y=%22240%22 font-family=%22Arial, sans-serif%22 font-weight=%22900%22 font-size=%2232%22 fill=%22%23a855f7%22 transform=%22rotate(60 130 230)%22%3EVoctra%3C/text%3E%3Ctext x=%22-20%22 y=%22280%22 font-family=%22Arial, sans-serif%22 font-weight=%22900%22 font-size=%2224%22 fill=%22%23ec4899%22 transform=%22rotate(-70 20 270)%22%3EVoctra%3C/text%3E%3Ctext x=%22220%22 y=%22270%22 font-family=%22Arial, sans-serif%22 font-weight=%22900%22 font-size=%2228%22 fill=%22%234f46e5%22 transform=%22rotate(90 250 260)%22%3EVoctra%3C/text%3E%3Ctext x=%22230%22 y=%22120%22 font-family=%22Arial, sans-serif%22 font-weight=%22900%22 font-size=%2220%22 fill=%22%23ec4899%22 transform=%22rotate(15 270 110)%22%3EVoctra%3C/text%3E%3C/svg%3E'); background-size: 300px 300px; background-repeat: repeat;"></div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             
             <div class="transition-all duration-1000 transform" :class="heroAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'">
                 <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-indigo-50 text-indigo-700 mb-6 border border-indigo-100 backdrop-blur-sm transition-transform duration-300 hover:scale-105">
@@ -322,8 +323,9 @@
         </div>
     </section>
 
-    <section id="a-propos" class="py-20 relative z-10" x-data="{ shown: false }" x-intersect.once="shown = true">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="a-propos" class="py-20 relative overflow-hidden z-10" x-data="{ shown: false }" x-intersect.once="shown = true">
+    <div class="absolute inset-0 opacity-[0.035] pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%22120%22 viewBox=%220 0 120 120%22%3E%3Ctext x=%2210%22 y=%2270%22 font-family=%22Arial, sans-serif%22 font-weight=%22900%22 font-size=%2260%22 fill=%22%23a855f7%22%3EV%3C/text%3E%3C/svg%3E'); background-size: 120px 120px; background-repeat: repeat;"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
             <div class="reveal" :class="{ 'active': shown }">
                 <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-pink-50 text-pink-700 mb-6 border border-pink-100">
@@ -374,6 +376,7 @@
 
     <section id="garanties" class="py-20 relative overflow-hidden z-10" x-data="{ lobbyistsShown: false }" x-intersect.once="lobbyistsShown = true">
         <div class="absolute inset-0 bg-slate-50 border-y border-slate-100 backdrop-blur-md"></div>
+        <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%22120%22 viewBox=%220 0 120 120%22%3E%3Ctext x=%2210%22 y=%2270%22 font-family=%22Arial, sans-serif%22 font-weight=%22900%22 font-size=%2260%22 fill=%22%234f46e5%22%3EV%3C/text%3E%3C/svg%3E'); background-size: 120px 120px; background-repeat: repeat;"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
                 <div class="reveal" :class="{ 'active': lobbyistsShown }">
@@ -451,8 +454,9 @@
         </div>
     </div>
     </section>
-    <section id="contact" class="py-24 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 relative z-10" x-data="{ shown: false }" x-intersect.once="shown = true">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 reveal" :class="{ 'active': shown }">
+    <section id="contact" class="py-24 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 relative z-10 overflow-hidden" x-data="{ shown: false }" x-intersect.once="shown = true">
+        <div class="absolute inset-0 opacity-[0.05] pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%22120%22 viewBox=%220 0 120 120%22%3E%3Ctext x=%2210%22 y=%2270%22 font-family=%22Arial, sans-serif%22 font-weight=%22900%22 font-size=%2260%22 fill=%22%23ffffff%22%3EV%3C/text%3E%3C/svg%3E'); background-size: 120px 120px; background-repeat: repeat;"></div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 reveal relative z-10" :class="{ 'active': shown }">
             <div class="bg-white/5 rounded-3xl p-8 sm:p-12 shadow-2xl backdrop-blur-md relative overflow-hidden border border-white/10">
                 <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
                 
