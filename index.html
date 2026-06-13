@@ -1,3 +1,5 @@
+
+Voctra · HTML
 <!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
 <head>
@@ -454,7 +456,7 @@
         </div>
     </div>
     </section>
-    <section id="contact" class="py-24 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 relative z-10 overflow-hidden" x-data="{ shown: false }" x-intersect.once="shown = true">
+    <section id="contact" class="py-24 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 relative z-10 overflow-hidden" x-data="{ shown: false, showForm: false }" x-intersect.once="shown = true">
         <div class="absolute inset-0 opacity-[0.05] pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%22120%22 viewBox=%220 0 120 120%22%3E%3Ctext x=%2210%22 y=%2270%22 font-family=%22Arial, sans-serif%22 font-weight=%22900%22 font-size=%2260%22 fill=%22%23ffffff%22%3EV%3C/text%3E%3C/svg%3E'); background-size: 120px 120px; background-repeat: repeat;"></div>
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 reveal relative z-10" :class="{ 'active': shown }">
             <div class="bg-white/5 rounded-3xl p-8 sm:p-12 shadow-2xl backdrop-blur-md relative overflow-hidden border border-white/10">
@@ -470,7 +472,13 @@
                         🎉 Votre demande de devis a bien été transmise. Nous vous recontactons sous 24 heures.
                     </div>
 
-                    <form id="leadForm" action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+                    <div x-show="!showForm" x-transition class="text-center">
+                        <button @click="showForm = true" type="button" class="btn-shine inline-flex items-center justify-center px-10 py-5 border border-transparent text-lg font-bold rounded-xl text-white bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 shadow-lg shadow-indigo-500/20 hover:brightness-110 transition-all cursor-pointer transform hover:scale-[1.02]">
+                            📝 Remplir le formulaire de devis
+                        </button>
+                    </div>
+
+                    <form x-show="showForm" x-transition x-cloak id="leadForm" action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
                         <input type="hidden" name="access_key" value="b8a75303-1cb1-472e-9aaa-aedb942d69d3">
                         <input type="hidden" name="subject" value="Nouvelle demande de devis - Voctra">
                         <input type="hidden" name="redirect" value="false">
